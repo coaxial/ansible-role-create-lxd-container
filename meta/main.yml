@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  author: Coaxial
+  description: Create LXD containers on target hosts
+  company: 64b.it
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: ubuntu
+      versions:
+        - trusty
+        - xenial
+        - bionic
+        - cosmic
+        - jessie
+        - stretch
+        - buster
+  galaxy_tags:
+    - system
+    - virtualization
+    - container
+    - containers
+    - lxd
+
+  dependencies: []
