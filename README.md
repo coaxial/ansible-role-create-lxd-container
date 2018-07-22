@@ -41,6 +41,9 @@ Example Playbook
 
 ```yaml
 - hosts: all
+  vars:
+    cc__containers:
+      - name: mycontainer
   roles:
     - create-lxd-container
 ```
