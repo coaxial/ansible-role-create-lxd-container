@@ -10,3 +10,9 @@ sudo lxd init --auto
 
 pip install ansible
 pip install molecule
+
+# Avoid running privileged containers, cf. https://archive.fo/KhNgb
+sudo sed -i 's/(lxd:.*):\d+/\1:1000000000' /etc/subuid
+sudo sed -i 's/(root:.*):\d+/\1:1000000000' /etc/subuid
+sudo sed -i 's/(lxd:.*):\d+/\1:1000000000' /etc/subgid
+sudo sed -i 's/(root:.*):\d+/\1:1000000000' /etc/subgid
