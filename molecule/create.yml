@@ -12,6 +12,7 @@
         architecture: x86_64
         config:
           security.nesting: "true"  # required for lxd in lxd
+          security.privileged: "true"
         source:
           type: image
           mode: pull
