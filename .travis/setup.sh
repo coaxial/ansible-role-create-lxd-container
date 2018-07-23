@@ -15,10 +15,10 @@ cat /etc/subuid
 cat /etc/subgid
 ls -clash /etc/subuid
 # Avoid running privileged containers, cf. https://stgraber.org/2017/06/15/custom-user-mappings-in-lxd-containers/
-sudo sed -i 's/^\(lxd:[0-9]+\):[0-9]+/\1:1000000000/' /etc/subuid
-sudo sed -i 's/^\(root\[0-9]+\):[0-9]+/\1:1000000000/' /etc/subuid
-sudo sed -i 's/^\(lxd:\[0-9]+\):[0-9]+/\1:1000000000/' /etc/subgid
-sudo sed -i 's/^\(root:\[0-9]+\):[0-9]+/\1:1000000000/' /etc/subgid
+sudo sed -i 's/^\(lxd:[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subuid
+sudo sed -i 's/^\(root\[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subuid
+sudo sed -i 's/^\(lxd:\[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subgid
+sudo sed -i 's/^\(root:\[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subgid
 
 cat /etc/subuid
 cat /etc/subgid
