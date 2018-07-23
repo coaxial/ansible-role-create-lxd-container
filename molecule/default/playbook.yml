@@ -1,5 +1,19 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - name: ansible-role-create-lxd-container
+  vars:
+    cc__containers:
+      - name: test-container
+      # autostart: true
+      # ipv4_address: 10.100.12.10
+      # limits_cpu: 1
+      # limits_cpu_allowance: 90%
+      # limits_memory: 512MB
+      # security_nesting: true
+      # security_privileged: true
+      # source_alias: ubuntu:16.04
+  tasks:
+    - name: Run role
+      include_role:
+        name: ansible-role-create-lxd-container
+      with_items: "{{ cc__containers }}"

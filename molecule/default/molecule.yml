@@ -6,20 +6,18 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: ubuntu-trusty
-    alias: ubuntu/trusty
   - name: ubuntu-xenial
     alias: ubuntu/xenial
-  - name: ubuntu-bionic
-    alias: ubuntu/bionic
-  - name: ubuntu-cosmic
-    alias: ubuntu/cosmic
-  - name: debian-jessie
-    alias: debian/jessie
-  - name: debian-stretch
-    alias: debian/stretch
-  - name: debian-buster
-    alias: debian/buster
+    # - name: ubuntu-bionic
+    #   alias: ubuntu/bionic
+    # - name: ubuntu-cosmic
+    #   alias: ubuntu/cosmic
+    # - name: debian-jessie
+    #   alias: debian/jessie
+    # - name: debian-stretch
+    #   alias: debian/stretch
+    # - name: debian-buster
+    #   alias: debian/buster
 
 provisioner:
   name: ansible
