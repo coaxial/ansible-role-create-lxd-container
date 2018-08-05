@@ -41,25 +41,30 @@
       loop_control:
         loop_var: container
 
-    - name: Enable nested containers (subuid)
-      delegate_to: "{{ item.name }}"
-      replace:
-        path: '/etc/subuid'
-        regexp: '^((lxd|root):\d+):(?!1000000000)\d+$'
-        replace: '\1:1000000000'
-      with_items: "{{ molecule_yml.platforms }}"
+# - name: Enable nested containers (subuid)
+#   delegate_to: "{{ item.name }}"
+#   replace:
+#     path: '/etc/subuid'
+#     regexp: '^((lxd|root):\d+):(?!1000000000)\d+$'
+#     replace: '\1:1000000000'
+#   with_items: "{{ molecule_yml.platforms }}"
 
-    - name: Enable nested containers (subgid)
-      delegate_to: "{{ item.name }}"
-      replace:
-        path: '/etc/subgid'
-        regexp: '^((lxd|root):\d+):(?!1000000000)\d+$'
-        replace: '\1:1000000000'
-      with_items: "{{ molecule_yml.platforms }}"
+# - name: Enable nested containers (subgid)
+#   delegate_to: "{{ item.name }}"
+#   replace:
+#     path: '/etc/subgid'
+#     regexp: '^((lxd|root):\d+):(?!1000000000)\d+$'
+#     replace: '\1:1000000000'
+#   with_items: "{{ molecule_yml.platforms }}"
 
-    - name: Restart LXD
-      delegate_to: "{{ item.name }}"
-      service:
-        name: lxd
-        state: restarted
-      with_items: "{{ molecule_yml.platforms }}"
+# - name: Restart LXD
+#   delegate_to: "{{ item.name }}"
+#   service:
+#     name: lxd
+#     state: restarted
+#   with_items: "{{ molecule_yml.platforms }}"
+
+# - name: Debug LXD
+#   delegate_to: "{{ item.name }}"
+#   command: cat /var/log/lxd/lxd.log
+#   with_items: "{{ molecule_yml.platforms }}"
