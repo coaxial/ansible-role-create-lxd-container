@@ -56,3 +56,10 @@
         regexp: '^((lxd|root):\d+):(?!1000000000)\d+$'
         replace: '\1:1000000000'
       with_items: "{{ molecule_yml.platforms }}"
+
+    - name: Restart LXD
+      delegate_to: "{{ item.name }}"
+      service:
+        name: lxd
+        state: restarted
+      with_items: "{{ molecule_yml.platforms }}"
