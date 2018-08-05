@@ -46,7 +46,7 @@
         path: "{{ item }}"
         backrefs: true
         regexp: '^((lxd|root):\d+)\d+$'
-        line: '\2:1000000000'
+        line: '\1:1000000000'
         state: present
       with_items:
         - /etc/subuid
