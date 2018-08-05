@@ -16,6 +16,10 @@ sudo sed -i 's/^\(lxd:[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subuid
 sudo sed -i 's/^\(root:[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subuid
 sudo sed -i 's/^\(lxd:[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subgid
 sudo sed -i 's/^\(root:[0-9]\{1,\}\):.*/\1:1000000000/' /etc/subgid
+cat /etc/subuid
+cat /etc/subgid
 sudo systemctl restart lxd
+cat /etc/subuid
+cat /etc/subgid
 
 cat /var/log/lxd/lxd.log
