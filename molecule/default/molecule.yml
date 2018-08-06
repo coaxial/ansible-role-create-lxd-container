@@ -6,8 +6,6 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: ubuntu-xenial
-    alias: ubuntu/xenial
   - name: ubuntu-bionic
     alias: ubuntu/bionic
   - name: ubuntu-cosmic

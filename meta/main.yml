@@ -9,7 +9,6 @@ galaxy_info:
   platforms:
     - name: ubuntu
       versions:
-        - xenial
         - bionic
         - cosmic
   galaxy_tags:
