@@ -1,20 +1,15 @@
 ---
 galaxy_info:
+  role_name: create-lxd-container
   author: Coaxial
   description: Create LXD containers on target hosts
   company: 64b.it
   license: MIT
-  min_ansible_version: 2.4
+  min_ansible_version: 2.5
   platforms:
     - name: ubuntu
       versions:
-        - trusty
-        - xenial
         - bionic
-        - cosmic
-        - jessie
-        - stretch
-        - buster
   galaxy_tags:
     - system
     - virtualization

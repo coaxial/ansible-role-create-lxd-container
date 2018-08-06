@@ -1,0 +1,8 @@
+---
+# See https://archive.fo/6VdpA
+# Can't loop and delegate a role at the same time...
+- name: Run coaxial.lxd role
+  import_role:
+    name: coaxial.lxd
+  delegate_to: "{{ container.name }}"
+  no_log: false

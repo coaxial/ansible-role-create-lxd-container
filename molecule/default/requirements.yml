@@ -1,0 +1,3 @@
+---
+- src: https://github.com/coaxial/ansible-role-lxd
+  name: coaxial.lxd

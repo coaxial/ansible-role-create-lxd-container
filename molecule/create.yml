@@ -3,17 +3,20 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+  no_log: false
   tasks:
     - name: Create molecule instance(s)
       lxd_container:
         name: "{{ item.name }}"
         state: started
+        architecture: x86_64
+        config:
+          security.nesting: "true"  # required for lxd in lxd
         source:
           type: image
           mode: pull
           server: https://images.linuxcontainers.org
-          protocol: lxd
+          protocol: simplestreams
           alias: "{{ item.alias }}/amd64"
         profiles: ["default"]
         wait_for_ipv4_addresses: true
@@ -24,3 +27,16 @@
       delegate_to: "{{ item.name }}"
       raw: apt-get install -y python
       with_items: "{{ molecule_yml.platforms }}"
+
+    - name: Gather facts
+      setup:
+      delegate_to: "{{ item.name }}"
+      with_items: "{{ molecule_yml.platforms }}"
+
+    - name: Install and configure LXD
+      # See https://archive.fo/6VdpA
+      # Can't loop and delegate a role at the same time...
+      include_tasks: role_loop_hack.yml
+      with_items: "{{ molecule_yml.platforms }}"
+      loop_control:
+        loop_var: container
