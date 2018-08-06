@@ -12,9 +12,6 @@ galaxy_info:
         - xenial
         - bionic
         - cosmic
-        - jessie
-        - stretch
-        - buster
   galaxy_tags:
     - system
     - virtualization
