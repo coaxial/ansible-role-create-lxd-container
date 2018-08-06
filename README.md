@@ -18,6 +18,7 @@ Name | Default | Possible values | Description
 `cc__containers` | unset | A list of maps conforming to the format detailed below | The list describing containers to create
 
 `cc__containers` format:
+
 Key | Default | Possible values | Description
 ---|---|---|---
 `autostart` | `"true"` | `"true"` or `"false"` **Note the double quotes, this needs to be a string and not a boolean** | Sets the `boot.autostart` property for the container (cf. https://github.com/lxc/lxd/blob/master/doc/containers.md)
