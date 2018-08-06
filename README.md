@@ -7,7 +7,7 @@ Create LXD containers on target hosts
 Requirements
 ------------
 
-Assumes a host with a functional LXD setup. If required, see my [LXD role](https://github.com/coaxial/ansible-role-lxd).
+Assumes a host with a functional LXD setup (i.e. initialized, and with a storage pool.) If required, see my [LXD role](https://github.com/coaxial/ansible-role-lxd).
 
 
 Role Variables

@@ -8,8 +8,6 @@ lint:
 platforms:
   - name: ubuntu-bionic
     alias: ubuntu/bionic
-  - name: ubuntu-cosmic
-    alias: ubuntu/cosmic
 
 provisioner:
   name: ansible

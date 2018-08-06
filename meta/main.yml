@@ -10,7 +10,6 @@ galaxy_info:
     - name: ubuntu
       versions:
         - bionic
-        - cosmic
   galaxy_tags:
     - system
     - virtualization
