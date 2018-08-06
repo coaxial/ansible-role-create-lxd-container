@@ -1,8 +1,4 @@
 ---
-- name: debug
-  shell: hostname
-  delegate_to: "{{ container.name }}"
-
 # See https://archive.fo/6VdpA
 # Can't loop and delegate a role at the same time...
 - name: Run coaxial.lxd role

@@ -8,16 +8,16 @@ lint:
 platforms:
   - name: ubuntu-xenial
     alias: ubuntu/xenial
-    # - name: ubuntu-bionic
-    #   alias: ubuntu/bionic
-    # - name: ubuntu-cosmic
-    #   alias: ubuntu/cosmic
-    # - name: debian-jessie
-    #   alias: debian/jessie
-    # - name: debian-stretch
-    #   alias: debian/stretch
-    # - name: debian-buster
-    #   alias: debian/buster
+  - name: ubuntu-bionic
+    alias: ubuntu/bionic
+  - name: ubuntu-cosmic
+    alias: ubuntu/cosmic
+  - name: debian-jessie
+    alias: debian/jessie
+  - name: debian-stretch
+    alias: debian/stretch
+  - name: debian-buster
+    alias: debian/buster
 
 provisioner:
   name: ansible
@@ -28,6 +28,8 @@ provisioner:
     name: ansible-lint
 scenario:
   name: default
+  # FIXME Idempotence disabled pending Ansible 2.6.3 release, cf issue #2
+  test_sequence: ['lint', 'destroy', 'dependency', 'syntax', 'create', 'prepare', 'converge', 'side_effect', 'verify', 'destroy']
 verifier:
   name: testinfra
   lint:
