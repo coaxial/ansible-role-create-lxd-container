@@ -6,13 +6,19 @@
       - name: test-container-1
       - name: test-container-2
         autostart: "false"
-        ipv4_address: 10.100.12.10
         limits_cpu: 1
         limits_cpu_allowance: 90%
         limits_memory: 512MB
         security_nesting: "true"
         security_privileged: "true"
         source_alias: 16.04
+        devices:
+          eth1:
+            name: eth1
+            nictype: macvlan
+            parent: lxdbr0
+            type: nic
+            ipv4.address: 10.100.12.10
   tasks:
     - name: Run role
       include_role:

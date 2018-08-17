@@ -22,8 +22,7 @@ Name | Default | Possible values | Description
 Key | Default | Possible values | Description
 ---|---|---|---
 `autostart` | `"true"` | `"true"` or `"false"` **Note the double quotes, this needs to be a string and not a boolean** | Sets the `boot.autostart` property for the container (cf. https://github.com/lxc/lxd/blob/master/doc/containers.md)
-`ipv4_address` | `auto` | Any valid value for `ipv4.address` (cf. https://github.com/lxc/lxd/blob/master/doc/networks.md) | The IPv4 this container will assume
-`ipv6_address` | `auto` | Any valid value for `ipv6.address` (cf. https://github.com/lxc/lxd/blob/master/doc/networks.md) | The IPv6 this container will assume
+`devices` | `{}` | Any dict of devices | Configures the devices on the container (cf. https://github.com/lxc/lxd/blob/master/doc/containers.md#devices-configuration)
 `limits_cpu_allowance` | `100%` | Limit container's CPU time share (cf. https://stgraber.org/2016/03/26/lxd-2-0-resource-control-412/ and https://github.com/lxc/lxd/blob/master/doc/containers.md#cpu-limits)
 `limits_cpu` | `""` i.e. all | Integers | Limit container's CPU/core usage (cf. https://stgraber.org/2016/03/26/lxd-2-0-resource-control-412/ and https://github.com/lxc/lxd/blob/master/doc/containers.md#cpu-limits)
 `limits_cpu_allowance` | `100%` | String (including `%` sign) | Limit container's CPU consumption (cf. https://stgraber.org/2016/03/26/lxd-2-0-resource-control-412 and https://github.com/lxc/lxd/blob/master/doc/containers.md#cpu-limits/)
@@ -48,6 +47,13 @@ Example Playbook
   vars:
     cc__containers:
       - name: mycontainer
+      - name: mycontainer-customdevices
+        devices:
+          eth0:
+            name: eth0
+            nictype: macvlan
+            parent: lxdbr0
+            type: nic
   tasks:
     - name: Configure containers
       include_role:
