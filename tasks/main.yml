@@ -9,13 +9,7 @@
       limits.memory: "{{ item.limits_memory | default(cc__container_default_limits_memory) }}"
       security.nesting: "{{ item.security_nesting | default(cc__container_default_security_nesting) }}"
       security.privileged: "{{ item.security_privileged | default(cc__container_default_security_privileged) }}"
-    devices:
-      eth0:
-        type: nic
-        nictype: macvlan
-        parent: lxdbr0
-        ipv4.address: "{{ item.ipv4_address | default(cc__container_default_ipv4_address) }}"
-        ipv6.address: "{{ item.ipv6_address | default(cc__container_default_ipv6_address) }}"
+    devices: "{{ item.devices | default(omit) }}"
     source:
       alias: "{{ item.source_alias | default(cc__container_default_source_alias) }}"
       mode: pull

@@ -27,9 +27,6 @@ def test_container_creation_defaults(host):
     assert not strtobool(c['config']['security.nesting'])
     assert not strtobool(c['config']['security.privileged'])
     assert c['profiles'] == ['default']
-    assert c['devices']['eth0']['parent'] == 'lxdbr0'
-    assert c['devices']['eth0']['ipv4.address'] == 'auto'
-    assert c['devices']['eth0']['ipv6.address'] == 'auto'
     assert c['config']['image.version'] == '18.04'
 
 
@@ -43,7 +40,7 @@ def test_container_creation_override_defaults(host):
     assert strtobool(c['config']['security.nesting'])
     assert strtobool(c['config']['security.privileged'])
     assert c['profiles'] == ['default']
-    assert c['devices']['eth0']['parent'] == 'lxdbr0'
-    assert c['devices']['eth0']['ipv4.address'] == '10.100.12.10'
-    assert c['devices']['eth0']['ipv6.address'] == 'auto'
+    assert c['devices']['eth1']['parent'] == 'lxdbr0'
+    assert c['devices']['eth1']['nictype'] == 'macvlan'
+    assert c['devices']['eth1']['ipv4.address'] == '10.100.12.10'
     assert c['config']['image.version'] == '16.04'

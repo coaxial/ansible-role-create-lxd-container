@@ -1,7 +1,5 @@
 ---
 cc__container_default_autostart: "true"
-cc__container_default_ipv4_address: auto
-cc__container_default_ipv6_address: auto
 cc__container_default_limits_cpu: ""
 cc__container_default_limits_cpu_allowance: "100%"
 cc__container_default_limits_memory: ""
