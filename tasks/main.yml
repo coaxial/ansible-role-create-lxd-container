@@ -2,7 +2,7 @@
 - name: Create container
   lxd_container:
     name: "{{ item.name }}"
-    config: "{{ item.config | default({}) | string | combine({
+    config: "{{ item.config | default({}) | combine({
         'boot.autostart': item.autostart | default(cc__container_default_autostart),
         'limits.cpu': item.limits_cpu | default(cc__container_default_limits_cpu),
         'limits.cpu.allowance': item.limits_cpu_allowance | default(cc__container_default_limits_cpu_allowance),
