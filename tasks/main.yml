@@ -2,14 +2,14 @@
 - name: Create container
   lxd_container:
     name: "{{ item.name }}"
-    config: "{{ item.config| default({}) | combine({
+    config: "{{ item.config | default({}) | combine({
         'boot.autostart': item.autostart | default(cc__container_default_autostart),
         'limits.cpu': item.limits_cpu | default(cc__container_default_limits_cpu),
         'limits.cpu.allowance': item.limits_cpu_allowance | default(cc__container_default_limits_cpu_allowance),
         'limits.memory': item.limits_memory | default(cc__container_default_limits_memory),
         'security.nesting': item.security_nesting | default(cc__container_default_security_nesting),
         'security.privileged': item.security_privileged | default(cc__container_default_security_privileged)
-        }) }}"
+        }) | to_json }}"
     devices: "{{ item.devices | default(omit) }}"
     source:
       alias: "{{ item.source_alias | default(cc__container_default_source_alias) }}"
