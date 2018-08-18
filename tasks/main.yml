@@ -3,6 +3,10 @@
   lxd_container:
     name: "{{ item.name }}"
     config: "{{ item.config | default({}) | combine({
+        'user.network-config': item.config['user.network-config'] | default(omit),
+        'user.user-data': item.config['user.user-data'] | default(omit),
+        'user.meta-data': item.config['user.meta-data'] | default(omit),
+        'user.vendor-data': item.config['user.vendor-data'] | default(omit),
         'boot.autostart': item.autostart | default(cc__container_default_autostart),
         'limits.cpu': item.limits_cpu | default(cc__container_default_limits_cpu),
         'limits.cpu.allowance': item.limits_cpu_allowance | default(cc__container_default_limits_cpu_allowance),
