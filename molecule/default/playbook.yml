@@ -4,7 +4,6 @@
   vars:
     cc__containers:
       - name: test-container-1
-        config:
       - name: test-container-2
         source_alias: 16.04
         devices:

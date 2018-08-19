@@ -12,3 +12,10 @@ cc__container_default_source_server: https://cloud-images.ubuntu.com/releases
 cc__container_default_source_type: image
 cc__container_default_wait_for_ipv4_addresses: "true"
 cc__container_default_state: started
+cc__container_default_config:
+  boot.autostart: "true"
+  limits.cpu: ""
+  limits.cpu.allowance: "100%"
+  limits.memory: ""
+  security.nesting: "false"
+  security.privileged: "false"

@@ -48,11 +48,13 @@ Example Playbook
     cc__containers:
       - name: mycontainer
         config:
+          boot.autostart: false
           user.network-config: |
             # cf. https://github.com/lxc/lxd/blob/master/doc/cloud-init.md
             version: 1
             ...
       - name: mycontainer-customdevices
+        config:
         devices:
           eth0:
             name: eth0
