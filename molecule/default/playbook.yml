@@ -16,7 +16,7 @@
         config:
           boot.autostart: "false"
           limits.cpu: 1
-          limits.cpu_allowance: 90%
+          limits.cpu.allowance: 90%
           limits.memory: 512MB
           security.nesting: "true"
           security.privileged: "true"
