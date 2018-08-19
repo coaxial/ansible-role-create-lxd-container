@@ -19,6 +19,15 @@
             parent: lxdbr0
             type: nic
             ipv4.address: 10.100.12.10
+        config:
+          user.network-config: |
+            version: 1
+            config:
+              - type: physical
+                name: eth0
+                subnets:
+                  - type: static
+                    address: 10.100.11.10
   tasks:
     - name: Run role
       include_role:

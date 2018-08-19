@@ -43,4 +43,5 @@ def test_container_creation_override_defaults(host):
     assert c['devices']['eth1']['parent'] == 'lxdbr0'
     assert c['devices']['eth1']['nictype'] == 'macvlan'
     assert c['devices']['eth1']['ipv4.address'] == '10.100.12.10'
+    assert c['devices']['eth0']['ipv4.address'] == '10.100.11.10'
     assert c['config']['image.version'] == '16.04'
