@@ -2,7 +2,7 @@
 - name: Create container
   lxd_container:
     name: "{{ item.name }}"
-    config: "{{ item.config | default(dict()) | combine({
+    config: "{{ item.config | default(omit) | combine({
         'user.network-config': item.config['user.network-config'] | default(omit),
         'user.user-data': item.config['user.user-data'] | default(omit),
         'user.meta-data': item.config['user.meta-data'] | default(omit),
@@ -13,7 +13,7 @@
         'limits.memory': item.limits_memory | default(cc__container_default_limits_memory),
         'security.nesting': item.security_nesting | default(cc__container_default_security_nesting),
         'security.privileged': item.security_privileged | default(cc__container_default_security_privileged)
-        }, recursive=True) }}"
+        }) }}"
     devices: "{{ item.devices | default(omit) }}"
     source:
       alias: "{{ item.source_alias | default(cc__container_default_source_alias) }}"
