@@ -47,6 +47,11 @@ Example Playbook
   vars:
     cc__containers:
       - name: mycontainer
+        config:
+          user.network-config: |
+            # cf. https://github.com/lxc/lxd/blob/master/doc/cloud-init.md
+            version: 1
+            ...
       - name: mycontainer-customdevices
         devices:
           eth0:
