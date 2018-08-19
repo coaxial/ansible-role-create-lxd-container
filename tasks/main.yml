@@ -2,13 +2,13 @@
 - name: Create container
   lxd_container:
     name: "{{ item.name }}"
-    config: "{{ item.config | default(cc__container_default_missing_config) | combine({
-        'boot.autostart': item.autostart | default(cc__container_default_autostart),
-        'limits.cpu': item.limits_cpu | default(cc__container_default_limits_cpu),
-        'limits.cpu.allowance': item.limits_cpu_allowance | default(cc__container_default_limits_cpu_allowance),
-        'limits.memory': item.limits_memory | default(cc__container_default_limits_memory),
-        'security.nesting': item.security_nesting | default(cc__container_default_security_nesting),
-        'security.privileged': item.security_privileged | default(cc__container_default_security_privileged)
+    config: "{{ item.config | combine({
+        'boot.autostart': item.config.boot.autostart | default(cc__container_default_autostart),
+        'limits.cpu': item.config.limits.cpu | default(cc__container_default_limits_cpu),
+        'limits.cpu.allowance': item.config.limits.cpu.allowance | default(cc__container_default_limits_cpu_allowance),
+        'limits.memory': item.config.limits.memory | default(cc__container_default_limits_memory),
+        'security.nesting': item.config.security.nesting | default(cc__container_default_security_nesting),
+        'security.privileged': item.config.security.privileged | default(cc__container_default_security_privileged)
         }) }}"
     devices: "{{ item.devices | default(omit) }}"
     source:
