@@ -12,8 +12,4 @@ cc__container_default_source_server: https://cloud-images.ubuntu.com/releases
 cc__container_default_source_type: image
 cc__container_default_wait_for_ipv4_addresses: "true"
 cc__container_default_state: started
-cc__container_default_missing_config:
-  user.network-config:
-  user.user-data:
-  user.meta-data:
-  user.vendor-data:
+cc__container_default_missing_config: {}
