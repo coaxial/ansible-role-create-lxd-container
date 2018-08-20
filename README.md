@@ -14,7 +14,7 @@ Role Variables
 --------------
 
 Name | Default | Description
----|---|---|---
+---|---|---
 `cc__containers` | unset | A list describing the containers to create, see below for format.
 
 `cc__containers` format:
@@ -26,25 +26,25 @@ Key | Default | Possible values | Description
 `source` | see below | Any valid `source` dict (see `lxd_container` documentation) | Where to get the image from
 `devices` | `{}` | Any valid `devices` dict (see `lxd_container` documentation) | Container's devices
 `profiles` | `["default"]` | List of (existing) profiles | A list of profiles to apply to the container
-`state` | `started` | `started`, `stopped`, `restarted`, `absent`, `frozen` | Initial container's state, cf. https://docs.ansible.com/ansible/2.5/modules/lxd_container_module.html?highlight=state
-`wait_for_ipv4_addresses` | `"true"` **Note that this must be a string (i.e. in quotes), not a boolean** | `"true"` or `"false"` | Wait for the container to get an IPv4, see `lxd_container` documentation
+`state` | `started` | `started`, `stopped`, `restarted`, `absent`, `frozen` | Initial container's state, cf. [lxd_container](https://docs.ansible.com/ansible/2.5/modules/lxd_container_module.html?highlight=state)
+`wait_for_ipv4_addresses` | `"true"` | `"true"` or `"false"` as strings | Wait for the container to get an IPv4, see `lxd_container` documentation
 
 ## Default config values (unless overridden):
 
 Key | Default
 ---|---
-`boot.autostart` | `"true"` **Note that this must be a string (i.e. in quotes), not a number**
+`boot.autostart` | `"true"` (string)
 `limits.cpu` | `""`
 `limits.cpu.allowance` | `"100%"`
 `limits.memory` | `""`
-`security.nesting` | `"false"` **Note that this must be a string (i.e. in quotes), not a number**
-`security.privileged` | `"false"` **Note that this must be a string (i.e. in quotes), not a number**
+`security.nesting` | `"false"` (string)
+`security.privileged` | `"false"` (string)
 
 ## Default source values (unless overridden):
 
 Key | Default
 ---|---
-`alias` | `"16.04"` **Note that this must be a string (i.e. in quotes), not a number**
+`alias` | `"16.04"` (string)
 `protocol` | `simplestreams`
 `server` | `https://cloud-images.ubuntu.com/releases`
 `type` | `image`
