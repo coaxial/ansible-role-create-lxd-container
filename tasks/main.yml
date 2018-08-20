@@ -2,19 +2,8 @@
 - name: Create container
   lxd_container:
     name: "{{ item.name }}"
-    config:
-      boot.autostart: "{{ item.autostart | default(cc__container_default_autostart) }}"
-      limits.cpu: "{{ item.limits_cpu | default(cc__container_default_limits_cpu) }}"
-      limits.cpu.allowance: "{{ item.limits_cpu_allowance | default(cc__container_default_limits_cpu_allowance) }}"
-      limits.memory: "{{ item.limits_memory | default(cc__container_default_limits_memory) }}"
-      security.nesting: "{{ item.security_nesting | default(cc__container_default_security_nesting) }}"
-      security.privileged: "{{ item.security_privileged | default(cc__container_default_security_privileged) }}"
+    config: "{{ cc__container_default_config | combine(item.config | default({})) }}"
     devices: "{{ item.devices | default(omit) }}"
-    source:
-      alias: "{{ item.source_alias | default(cc__container_default_source_alias) }}"
-      mode: pull
-      protocol: "{{ item.source_protocol | default(cc__container_default_source_protocol) }}"
-      server: "{{ item.source_server | default(cc__container_default_source_server) }}"
-      type: "{{ item.source_type | default(cc__container_default_source_type) }}"
+    source: "{{ cc__container_default_source | combine(item.source | default({})) }}"
     profiles: "{{ item.profiles | default(cc__container_default_profiles) }}"
     wait_for_ipv4_addresses: "{{ item.wait_for_ipv4_addresses | default(cc__container_default_wait_for_ipv4_addresses) }}"

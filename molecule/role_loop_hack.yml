@@ -6,3 +6,15 @@
     name: coaxial.lxd
   delegate_to: "{{ container.name }}"
   no_log: false
+
+- name: Create test profile
+  lxd_profile:
+    name: testprofile
+    devices:
+      eth0:
+        name: eth0
+        nictype: bridged
+        parent: lxdbr0
+        type: nic
+  delegate_to: "{{ container.name }}"
+  no_log: false
