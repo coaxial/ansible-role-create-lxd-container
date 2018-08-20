@@ -21,7 +21,7 @@ Name | Default | Description
 
 Key | Default | Possible values | Description
 ---|---|---|---
-`name` (required) | unset | Any valid hostname (container names have to be legal hostnames) | The container name
+`name` (required) | unset | Any valid hostname (container names must be legal hostnames) | The container name
 `config` | see below | Any valid `config` dict (see `lxd_container` documentation) | Container's configuration
 `source` | see below | Any valid `source` dict (see `lxd_container` documentation) | Where to get the image from
 `devices` | `{}` | Any valid `devices` dict (see `lxd_container` documentation) | Container's devices
@@ -29,7 +29,7 @@ Key | Default | Possible values | Description
 `state` | `started` | `started`, `stopped`, `restarted`, `absent`, `frozen` | Initial container's state, cf. [lxd_container](https://docs.ansible.com/ansible/2.5/modules/lxd_container_module.html?highlight=state)
 `wait_for_ipv4_addresses` | `"true"` | `"true"` or `"false"` as strings | Wait for the container to get an IPv4, see `lxd_container` documentation
 
-#### Default config values (unless overridden):
+#### Default `config:` values (unless overridden):
 
 Key | Default
 ---|---
@@ -40,7 +40,7 @@ Key | Default
 `security.nesting` | `"false"` (string)
 `security.privileged` | `"false"` (string)
 
-#### Default source values (unless overridden):
+#### Default `source:` values (unless overridden):
 
 Key | Default
 ---|---
