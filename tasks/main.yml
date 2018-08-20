@@ -4,11 +4,6 @@
     name: "{{ item.name }}"
     config: "{{ cc__container_default_config | combine(item.config | default({})) }}"
     devices: "{{ item.devices | default(omit) }}"
-    source:
-      alias: "{{ item.source_alias | default(cc__container_default_source_alias) }}"
-      mode: pull
-      protocol: "{{ item.source_protocol | default(cc__container_default_source_protocol) }}"
-      server: "{{ item.source_server | default(cc__container_default_source_server) }}"
-      type: "{{ item.source_type | default(cc__container_default_source_type) }}"
+    source: "{{ cc__container_default_source | combine(item.source | default({})) }}"
     profiles: "{{ item.profiles | default(cc__container_default_profiles) }}"
     wait_for_ipv4_addresses: "{{ item.wait_for_ipv4_addresses | default(cc__container_default_wait_for_ipv4_addresses) }}"

@@ -5,8 +5,14 @@
     cc__containers:
       - name: test-container-1
       - name: test-container-2
-        source_alias: 16.04
+        source:
+          alias: "16.04"
         devices:
+          eth0:
+            name: eth0
+            nictype: bridged
+            parent: lxdbr0
+            type: nic
           eth1:
             name: eth1
             nictype: macvlan
@@ -15,7 +21,7 @@
             ipv4.address: 10.100.12.10
         config:
           boot.autostart: "false"
-          limits.cpu: 1
+          limits.cpu: "1"
           limits.cpu.allowance: 90%
           limits.memory: 512MB
           security.nesting: "true"
@@ -28,6 +34,9 @@
                 subnets:
                   - type: static
                     address: 10.100.11.10
+        profiles:
+          - default
+          - testprofile
   tasks:
     - name: Run role
       include_role:

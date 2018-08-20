@@ -1,15 +1,5 @@
 ---
-cc__container_default_autostart: "true"
-cc__container_default_limits_cpu: ""
-cc__container_default_limits_cpu_allowance: "100%"
-cc__container_default_limits_memory: ""
 cc__container_default_profiles: ["default"]
-cc__container_default_security_nesting: "false"
-cc__container_default_security_privileged: "false"
-cc__container_default_source_alias: 18.04
-cc__container_default_source_protocol: simplestreams
-cc__container_default_source_server: https://cloud-images.ubuntu.com/releases
-cc__container_default_source_type: image
 cc__container_default_wait_for_ipv4_addresses: "true"
 cc__container_default_state: started
 cc__container_default_config:
@@ -19,3 +9,8 @@ cc__container_default_config:
   limits.memory: ""
   security.nesting: "false"
   security.privileged: "false"
+cc__container_default_source:
+  alias: "18.04"
+  protocol: simplestreams
+  server: https://cloud-images.ubuntu.com/releases
+  type: image

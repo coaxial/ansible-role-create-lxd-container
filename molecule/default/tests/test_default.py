@@ -9,14 +9,6 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
-def test_example(host):
-    file = host.file('/etc/hosts')
-
-    assert file.exists
-    assert file.user == 'root'
-    assert file.group == 'root'
-
-
 def test_container_creation_defaults(host):
     c = yaml.load(host.check_output('lxc config show test-container-1'))
 
@@ -28,6 +20,7 @@ def test_container_creation_defaults(host):
     assert not strtobool(c['config']['security.privileged'])
     assert c['profiles'] == ['default']
     assert c['config']['image.version'] == '18.04'
+    assert c['profiles'] == ['default']
 
 
 def test_container_creation_override_defaults(host):
@@ -39,9 +32,8 @@ def test_container_creation_override_defaults(host):
     assert c['config']['limits.memory'] == "512MB"
     assert strtobool(c['config']['security.nesting'])
     assert strtobool(c['config']['security.privileged'])
-    assert c['profiles'] == ['default']
     assert c['devices']['eth1']['parent'] == 'lxdbr0'
     assert c['devices']['eth1']['nictype'] == 'macvlan'
     assert c['devices']['eth1']['ipv4.address'] == '10.100.12.10'
-    assert c['devices']['eth0']['ipv4.address'] == '10.100.11.10'
     assert c['config']['image.version'] == '16.04'
+    assert c['profiles'] == ['default', 'testprofile']
