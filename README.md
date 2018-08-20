@@ -17,7 +17,7 @@ Name | Default | Description
 ---|---|---
 `cc__containers` | unset | A list describing the containers to create, see below for format.
 
-`cc__containers` format:
+### `cc__containers` format
 
 Key | Default | Possible values | Description
 ---|---|---|---
@@ -29,7 +29,7 @@ Key | Default | Possible values | Description
 `state` | `started` | `started`, `stopped`, `restarted`, `absent`, `frozen` | Initial container's state, cf. [lxd_container](https://docs.ansible.com/ansible/2.5/modules/lxd_container_module.html?highlight=state)
 `wait_for_ipv4_addresses` | `"true"` | `"true"` or `"false"` as strings | Wait for the container to get an IPv4, see `lxd_container` documentation
 
-## Default config values (unless overridden):
+#### Default config values (unless overridden):
 
 Key | Default
 ---|---
@@ -40,7 +40,7 @@ Key | Default
 `security.nesting` | `"false"` (string)
 `security.privileged` | `"false"` (string)
 
-## Default source values (unless overridden):
+#### Default source values (unless overridden):
 
 Key | Default
 ---|---
@@ -63,7 +63,7 @@ Example Playbook
           user.network-config: |
             # cf. https://github.com/lxc/lxd/blob/master/doc/cloud-init.md
             version: 1
-            ...
+            # ...
       - name: mycontainer-customdevices
         devices:
           eth0:
